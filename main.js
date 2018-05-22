@@ -139,7 +139,7 @@ function updateBuyPrice(){
 function updateSnailmasterPrice(){
     var snailmasterpricedoc=document.getElementById('snailmasterprice')
 	getBankermasterReq(function(req) {
-		snailmasterpricedoc.textContent = translateQuantity(req, 0);
+		bankermasterpricedoc.textContent = translateQuantity(req, 0);
 	});
 }
 
@@ -147,7 +147,7 @@ function updateSnailmasterPrice(){
 function updateCurrentSnailmaster(){
     var currentsnailmasterdoc=document.getElementById('currentsnailmaster')
     //eggstobuydoc.textContent='?'
-	currentsnailmaster.textContent=ceoAddress()
+	currentbankermaster.textContent=ceoAddress()
 }
 
 function getFreeShrimp2(){

@@ -55,7 +55,7 @@ function refreshData(){
             timeuntilfulldoc.textContent='?'
         }
     });
-    getMyShrimp(function(shrimp){
+    getMyBanker(function(shrimp){
         lastNumShrimp=shrimp
         var gfsdoc=document.getElementById('getfreeshrimp')
         if(shrimp>0){

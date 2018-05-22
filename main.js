@@ -150,7 +150,7 @@ function updateCurrentSnailmaster(){
 	currentbankermaster.textContent=ceoAddress()
 }
 
-function getFreeShrimp2(){
+function getFreeBanker2(){
     var ethtospenddoc=0.001//document.getElementById('freesnailspend')
     weitospend=web3.toWei(ethtospenddoc,'ether')
     getFreeShrimp(weitospend,function(){

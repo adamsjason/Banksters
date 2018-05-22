@@ -137,9 +137,9 @@ function updateBuyPrice(){
 }
 
 function updateSnailmasterPrice(){
-    var snailmasterpricedoc=document.getElementById('snailmasterprice')
+    var snailmasterpricedoc=document.getElementById('bankermasterprice')
 	getBankermasterReq(function(req) {
-		bankermasterpricedoc.textContent = translateQuantity(req, 0);
+		snailmasterpricedoc.textContent = translateQuantity(req, 0);
 	});
 }
 

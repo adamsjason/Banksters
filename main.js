@@ -1,7 +1,7 @@
 var modal
 var modalContent
 var lastNumEggs=-1
-var lastNumShrimp=-1
+var lastNumBanker=-1
 var lastSecondsUntilFull=100
 lastHatchTime=0
 var eggstohatch1=864
@@ -47,44 +47,44 @@ function refreshData(){
 
         }
         var timeuntilfulldoc=document.getElementById('timeuntilfull')
-        secondsuntilfull=eggstohatch1-eggs/lastNumShrimp
-        console.log('secondsuntilfull ',secondsuntilfull,eggstohatch1,eggs,lastNumShrimp)
+        secondsuntilfull=eggstohatch1-eggs/lastNumBanker
+        console.log('secondsuntilfull ',secondsuntilfull,eggstohatch1,eggs,lastNumBanker)
         lastSecondsUntilFull=secondsuntilfull
         timeuntilfulldoc.textContent=secondsToString(secondsuntilfull)
-        if(lastNumShrimp==0){
+        if(lastNumBanker==0){
             timeuntilfulldoc.textContent='?'
         }
     });
-    getMyBanker(function(shrimp){
-        lastNumShrimp=shrimp
+    getMyBanker(function(banker){
+        lastNumBanker=banker
         var gfsdoc=document.getElementById('getfreebanker')
-        if(shrimp>0){
+        if(banker>0){
             gfsdoc.style.display="none"
         }
         else{
             gfsdoc.style.display="inline-block"
         }
-        var allnumshrimp=document.getElementsByClassName('numshrimp')
-        for(var i=0;i<allnumshrimp.length;i++){
-            if(allnumshrimp[i]){
-                allnumshrimp[i].textContent=translateQuantity(shrimp,0)
+        var allnumbanker=document.getElementsByClassName('numbanker')
+        for(var i=0;i<allnumbanker.length;i++){
+            if(allnumbanker[i]){
+                allnumbanker[i].textContent=translateQuantity(banker,0)
             }
         }
         var productiondoc=document.getElementById('production')
-        productiondoc.textContent=formatEggs(lastNumShrimp*60*60)
+        productiondoc.textContent=formatEggs(lastNumBanker*60*60)
     });
     updateBuyPrice()
     updateSellPrice()
-	updateSnailmasterPrice()
-	updateCurrentSnailmaster()
+	updateBankermasterPrice()
+	updateCurrentBankermaster()
     var prldoc=document.getElementById('playerreflink')
     prldoc.textContent=window.location+"?ref="+web3.eth.accounts[0]
     var copyText = document.getElementById("copytextthing");
     copyText.value=prldoc.textContent
 }
 function updateEggNumber(eggs){
-    var hatchshrimpquantitydoc=document.getElementById('hatchbankerquantity')
-    hatchshrimpquantitydoc.textContent=translateQuantity(eggs,0)
+    var hatchbankerquantitydoc=document.getElementById('hatchbankerquantity')
+    hatchbankerquantitydoc.textContent=translateQuantity(eggs,0)
     var allnumeggs=document.getElementsByClassName('numeggs')
     for(var i=0;i<allnumeggs.length;i++){
         if(allnumeggs[i]){
@@ -101,13 +101,13 @@ function hatchEggs1(){
     hatchEggs(ref,displayTransactionMessage())
 }
 function liveUpdateEggs(){
-    if(lastSecondsUntilFull>1 && lastNumEggs>=0 && lastNumShrimp>0 && eggstohatch1>0){
+    if(lastSecondsUntilFull>1 && lastNumEggs>=0 && lastNumBanker>0 && eggstohatch1>0){
         currentTime=new Date().getTime()
         if(currentTime/1000-lastHatchTime>eggstohatch1){
             return;
         }
         difference=(currentTime-lastUpdate)/1000
-        additionalEggs=Math.floor(difference*lastNumShrimp)
+        additionalEggs=Math.floor(difference*lastNumBanker)
         updateEggNumber(formatEggs(lastNumEggs+additionalEggs))
     }
 }
@@ -136,24 +136,24 @@ function updateBuyPrice(){
     });
 }
 
-function updateSnailmasterPrice(){
-    var snailmasterpricedoc=document.getElementById('bankermasterprice')
+function updateBankermasterPrice(){
+    var bankermasterpricedoc=document.getElementById('bankermasterprice')
 	getBankermasterReq(function(req) {
-		snailmasterpricedoc.textContent = translateQuantity(req, 0);
+		bankermasterpricedoc.textContent = translateQuantity(req, 0);
 	});
 }
 
 
-function updateCurrentSnailmaster(){
-    var currentsnailmasterdoc=document.getElementById('currentsnailmaster')
+function updateCurrentBankermaster(){
+    var currentbankermasterdoc=document.getElementById('currentbankermaster')
     //eggstobuydoc.textContent='?'
 	currentbankermaster.textContent=ceoAddress()
 }
 
 function getFreeBanker2(){
-    var ethtospenddoc=0.001//document.getElementById('freesnailspend')
+    var ethtospenddoc=0.001//document.getElementById('freebankerspend')
     weitospend=web3.toWei(ethtospenddoc,'ether')
-    getFreeShrimp(weitospend,function(){
+    getFreeBanker(weitospend,function(){
         displayTransactionMessage();
     });
 }
@@ -263,18 +263,18 @@ function secondsToString(seconds)
     return numhours + "h " + numminutes + "m "//+numseconds+"s";
 }
 function disableButtons(){
-    var allnumshrimp=document.getElementsByClassName('btn-lg')
-    for(var i=0;i<allnumshrimp.length;i++){
-        if(allnumshrimp[i]){
-            allnumshrimp[i].style.display="none"
+    var allnumbanker=document.getElementsByClassName('btn-lg')
+    for(var i=0;i<allnumbanker.length;i++){
+        if(allnumbanker[i]){
+            allnumbanker[i].style.display="none"
         }
     }
 }
 function enableButtons(){
-    var allnumshrimp=document.getElementsByClassName('btn-lg')
-    for(var i=0;i<allnumshrimp.length;i++){
-        if(allnumshrimp[i]){
-            allnumshrimp[i].style.display="inline-block"
+    var allnumbanker=document.getElementsByClassName('btn-lg')
+    for(var i=0;i<allnumbanker.length;i++){
+        if(allnumbanker[i]){
+            allnumbanker[i].style.display="inline-block"
         }
     }
 }

@@ -83,7 +83,7 @@ function refreshData(){
     copyText.value=prldoc.textContent
 }
 function updateEggNumber(eggs){
-    var hatchshrimpquantitydoc=document.getElementById('hatchshrimpquantity')
+    var hatchshrimpquantitydoc=document.getElementById('hatchbankerquantity')
     hatchshrimpquantitydoc.textContent=translateQuantity(eggs,0)
     var allnumeggs=document.getElementsByClassName('numeggs')
     for(var i=0;i<allnumeggs.length;i++){

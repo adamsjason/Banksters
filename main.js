@@ -138,7 +138,7 @@ function updateBuyPrice(){
 
 function updateSnailmasterPrice(){
     var snailmasterpricedoc=document.getElementById('snailmasterprice')
-	getSnailmasterReq(function(req) {
+	getBankermasterReq(function(req) {
 		snailmasterpricedoc.textContent = translateQuantity(req, 0);
 	});
 }

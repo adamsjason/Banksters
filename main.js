@@ -57,7 +57,7 @@ function refreshData(){
     });
     getMyBanker(function(shrimp){
         lastNumShrimp=shrimp
-        var gfsdoc=document.getElementById('getfreeshrimp')
+        var gfsdoc=document.getElementById('getfreebanker')
         if(shrimp>0){
             gfsdoc.style.display="none"
         }
